@@ -1,0 +1,89 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Heart, ShoppingBag, Trash2, ArrowRight } from "lucide-react";
+import { useWishlistStore } from "@/store/wishlistStore";
+import { useCartStore } from "@/store/cartStore";
+import { PRODUCTS } from "@/data/products";
+import ProductCard from "@/components/ui/ProductCard";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import { useToastStore } from "@/store/toastStore";
+
+export default function WishlistPage() {
+  const [mounted, setMounted] = useState(false);
+  const { items, clearWishlist } = useWishlistStore();
+  const { addItem } = useCartStore();
+  const { showToast } = useToastStore();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="max-w-[1440px] mx-auto px-4 py-20 text-center">
+        <div className="animate-pulse text-[#6B6B6B] font-serif text-xl">Loading your saved craft pieces…</div>
+      </div>
+    );
+  }
+
+  const savedProducts = PRODUCTS.filter((p) => items.includes(p.id));
+
+  return (
+    <div className="min-h-screen bg-[#FAF6F0] pb-24">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-4 border-b border-[#E6E0D8]">
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "My Wishlist" }]} />
+      </div>
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#E6E0D8] pb-4">
+          <div>
+            <h1 className="font-serif text-2xl sm:text-4xl text-[#2A2A2A]">
+              My Saved Wishlist
+            </h1>
+            <p className="text-xs text-[#6B6B6B] mt-1">
+              You have {savedProducts.length} {savedProducts.length === 1 ? "item" : "items"} saved in your wishlist
+            </p>
+          </div>
+
+          {savedProducts.length > 0 && (
+            <button
+              onClick={clearWishlist}
+              className="text-xs text-[#6B6B6B] hover:text-[#B3261E] underline font-medium"
+            >
+              Clear Entire Wishlist
+            </button>
+          )}
+        </div>
+
+        {savedProducts.length === 0 ? (
+          <div className="max-w-md mx-auto py-16 text-center space-y-4">
+            <div className="w-16 h-16 rounded-full bg-white border border-[#E6E0D8] mx-auto flex items-center justify-center text-[#6B6B6B]">
+              <Heart className="w-8 h-8 text-[#8B2331]" />
+            </div>
+            <h3 className="font-serif text-xl text-[#2A2A2A]">Your Wishlist is Empty</h3>
+            <p className="text-xs text-[#6B6B6B] leading-relaxed">
+              Save your favorite handblock kurtas, silk sarees, and solid wood furniture by clicking the heart icon on any product.
+            </p>
+            <div className="pt-2">
+              <Link
+                href="/category/women"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#8B2331] hover:bg-[#6E1B26] text-white text-xs font-bold uppercase tracking-wider transition-colors"
+              >
+                <span>Explore Collections</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            {savedProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
