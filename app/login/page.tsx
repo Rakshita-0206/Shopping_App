@@ -18,6 +18,7 @@ import { useFabfamilyStore } from "@/store/fabfamilyStore";
 import { useCartStore } from "@/store/cartStore";
 import { useWishlistStore } from "@/store/wishlistStore";
 import { useToastStore } from "@/store/toastStore";
+import FabindiaOrnament from "@/components/ui/FabindiaOrnament";
 
 function LoginContent() {
   const router = useRouter();
@@ -373,141 +374,17 @@ function LoginContent() {
       {/* 4. MAIN BODY CANVAS WITH ORNAMENTAL MANDALA ARTWORK (LEFT & RIGHT) */}
       {/* ========================================================================= */}
       <main className="relative flex-1 flex items-center justify-center py-16 sm:py-24 px-4 overflow-hidden bg-white">
-        {/* LEFT MANDALA SVG (Exact authentic Henna / Floral Paisley filigree in dusty terracotta) */}
-        <div
-          className="absolute -left-12 sm:left-0 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-65 sm:opacity-85 z-0"
-          aria-hidden="true"
-        >
-          <svg
-            width="340"
-            height="560"
-            viewBox="0 0 340 560"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-[#D8BDB1]"
-          >
-            <g stroke="currentColor" strokeWidth="1.2">
-              {/* Concentric Arcs */}
-              <circle cx="0" cy="280" r="260" strokeDasharray="3 3" />
-              <circle cx="0" cy="280" r="230" />
-              <circle cx="0" cy="280" r="200" strokeDasharray="4 2" />
-              <circle cx="0" cy="280" r="170" />
-              <circle cx="0" cy="280" r="140" strokeDasharray="2 2" />
-              <circle cx="0" cy="280" r="110" />
-              <circle cx="0" cy="280" r="80" />
-              <circle cx="0" cy="280" r="50" />
+        {/* LEFT ORNAMENT (Exact match to Image 2 - Authentic Fabindia Henna / Mandala Motif) */}
+        <FabindiaOrnament
+          side="left"
+          className="absolute -left-12 sm:left-0 top-1/2 -translate-y-1/2 opacity-75 sm:opacity-90 z-0"
+        />
 
-              {/* Radiant Petals & Floral Curves */}
-              {Array.from({ length: 19 }).map((_, i) => {
-                const angle = ((i * 10 - 90) * Math.PI) / 180;
-                const x1 = Math.cos(angle) * 110;
-                const y1 = 280 + Math.sin(angle) * 110;
-                const x2 = Math.cos(angle) * 200;
-                const y2 = 280 + Math.sin(angle) * 200;
-                const cpx = Math.cos(angle + 0.12) * 160;
-                const cpy = 280 + Math.sin(angle + 0.12) * 160;
-                return (
-                  <path
-                    key={`lpetal-${i}`}
-                    d={`M ${x1} ${y1} Q ${cpx} ${cpy} ${x2} ${y2}`}
-                  />
-                );
-              })}
-
-              {/* Scalloped Outer Floral Tips */}
-              {Array.from({ length: 15 }).map((_, i) => {
-                const angle = ((i * 12 - 84) * Math.PI) / 180;
-                const cx = Math.cos(angle) * 245;
-                const cy = 280 + Math.sin(angle) * 245;
-                return (
-                  <circle
-                    key={`ldot-${i}`}
-                    cx={cx}
-                    cy={cy}
-                    r="3.5"
-                    fill="currentColor"
-                  />
-                );
-              })}
-
-              {/* Outer Paisley Flourish Leaf */}
-              <path
-                d="M 210 180 C 260 210 270 250 240 300 C 200 360 170 330 200 270 C 220 230 250 200 210 180 Z"
-                strokeWidth="1.2"
-              />
-              <path
-                d="M 210 380 C 260 350 270 310 240 260 C 200 200 170 230 200 290 C 220 330 250 360 210 380 Z"
-                strokeWidth="1.2"
-              />
-            </g>
-          </svg>
-        </div>
-
-        {/* RIGHT MANDALA SVG (Exact Mirrored Henna Artwork) */}
-        <div
-          className="absolute -right-12 sm:right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-65 sm:opacity-85 scale-x-[-1] z-0"
-          aria-hidden="true"
-        >
-          <svg
-            width="340"
-            height="560"
-            viewBox="0 0 340 560"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-[#D8BDB1]"
-          >
-            <g stroke="currentColor" strokeWidth="1.2">
-              <circle cx="0" cy="280" r="260" strokeDasharray="3 3" />
-              <circle cx="0" cy="280" r="230" />
-              <circle cx="0" cy="280" r="200" strokeDasharray="4 2" />
-              <circle cx="0" cy="280" r="170" />
-              <circle cx="0" cy="280" r="140" strokeDasharray="2 2" />
-              <circle cx="0" cy="280" r="110" />
-              <circle cx="0" cy="280" r="80" />
-              <circle cx="0" cy="280" r="50" />
-
-              {Array.from({ length: 19 }).map((_, i) => {
-                const angle = ((i * 10 - 90) * Math.PI) / 180;
-                const x1 = Math.cos(angle) * 110;
-                const y1 = 280 + Math.sin(angle) * 110;
-                const x2 = Math.cos(angle) * 200;
-                const y2 = 280 + Math.sin(angle) * 200;
-                const cpx = Math.cos(angle + 0.12) * 160;
-                const cpy = 280 + Math.sin(angle + 0.12) * 160;
-                return (
-                  <path
-                    key={`rpetal-${i}`}
-                    d={`M ${x1} ${y1} Q ${cpx} ${cpy} ${x2} ${y2}`}
-                  />
-                );
-              })}
-
-              {Array.from({ length: 15 }).map((_, i) => {
-                const angle = ((i * 12 - 84) * Math.PI) / 180;
-                const cx = Math.cos(angle) * 245;
-                const cy = 280 + Math.sin(angle) * 245;
-                return (
-                  <circle
-                    key={`rdot-${i}`}
-                    cx={cx}
-                    cy={cy}
-                    r="3.5"
-                    fill="currentColor"
-                  />
-                );
-              })}
-
-              <path
-                d="M 210 180 C 260 210 270 250 240 300 C 200 360 170 330 200 270 C 220 230 250 200 210 180 Z"
-                strokeWidth="1.2"
-              />
-              <path
-                d="M 210 380 C 260 350 270 310 240 260 C 200 200 170 230 200 290 C 220 330 250 360 210 380 Z"
-                strokeWidth="1.2"
-              />
-            </g>
-          </svg>
-        </div>
+        {/* RIGHT ORNAMENT (Exact match to Image 2 - Authentic Fabindia Henna / Mandala Motif) */}
+        <FabindiaOrnament
+          side="right"
+          className="absolute -right-12 sm:right-0 top-1/2 -translate-y-1/2 opacity-75 sm:opacity-90 z-0"
+        />
 
         {/* CENTERED LOGIN OR SIGNUP FORM */}
         <div className="relative z-10 max-w-[390px] w-full mx-auto text-center">
