@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import AnnouncementBar from "@/components/layout/AnnouncementBar";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import CartDrawer from "@/components/cart/CartDrawer";
-import ToastContainer from "@/components/ui/Toast";
+import StoreLayoutChrome from "@/components/layout/StoreLayoutChrome";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -47,12 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${jakarta.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#FAF6F0] text-[#2A2A2A] selection:bg-[#8B2331] selection:text-white">
-        <AnnouncementBar />
-        <Navbar />
-        <main className="flex-1 w-full">{children}</main>
-        <Footer />
-        <CartDrawer />
-        <ToastContainer />
+        <StoreLayoutChrome>{children}</StoreLayoutChrome>
       </body>
     </html>
   );

@@ -11,9 +11,7 @@ import {
   ShoppingBag,
   MapPin,
   ChevronDown,
-  X,
   TrendingUp,
-  Sparkles,
 } from "lucide-react";
 import { CATEGORIES } from "@/data/categories";
 import MegaMenu from "@/components/layout/MegaMenu";

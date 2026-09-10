@@ -15,7 +15,7 @@ export default function AboutPage() {
       {/* Hero Header */}
       <section className="relative h-[55vh] min-h-[420px] bg-[#1F2A44] flex items-center justify-center">
         <Image
-          src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1600&auto=format&fit=crop"
+          src="/images/hero/slide-1.jpg"
           alt="Weaver working on a traditional wooden handloom"
           fill
           priority
@@ -95,7 +95,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/5] bg-white border border-[#E6E0D8]">
             <Image
-              src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+              src="/images/home/artisan-blockprint.jpg"
               alt="Artisan block printing with teakwood stamp"
               fill
               className="object-cover"

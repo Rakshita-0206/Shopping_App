@@ -8,16 +8,9 @@ import {
   ChevronRight,
   ArrowRight,
   Camera,
-  Sparkles,
-  Award,
-  Users,
-  Feather,
   CheckCircle2,
-  Heart,
-  ShoppingBag,
-  Send,
 } from "lucide-react";
-import { CATEGORIES, QUICK_CATEGORIES } from "@/data/categories";
+import { QUICK_CATEGORIES } from "@/data/categories";
 import { PRODUCTS } from "@/data/products";
 import ProductCard from "@/components/ui/ProductCard";
 import { useToastStore } from "@/store/toastStore";
@@ -26,57 +19,50 @@ const HERO_SLIDES = [
   {
     id: 1,
     headline: "NEVER MEANT TO BLEND IN",
-    subtitle: "The Modern Festive & Western Edit",
-    description: "Contemporary cuts steeped in centuries of Indian craft mastery and rich botanical dyes.",
     ctaText: "SHOP WESTERN WEAR",
     ctaLink: "/category/women",
     ctaColor: "bg-[#1F2A44] hover:bg-[#162035] text-white",
-    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1800&auto=format&fit=crop",
-    tag: "Festive Collection 2026",
+    image: "/images/hero/slide-1.jpg",
   },
   {
     id: 2,
     headline: "THE CHIKANKARI SYMPHONY",
-    subtitle: "Artisanal Pure Mulmul & Chanderi Silks",
-    description: "Hand-embroidery by women artisan collectives of Awadh, paired with airy silken silhouettes.",
     ctaText: "EXPLORE WOMEN",
     ctaLink: "/category/women?sub=Kurtas%20%26%20Tunics",
     ctaColor: "bg-[#8B2331] hover:bg-[#6E1B26] text-white",
-    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1800&auto=format&fit=crop",
-    tag: "Handcrafted Luxury",
+    image: "/images/hero/slide-2.jpg",
   },
   {
     id: 3,
     headline: "SLOW TAILORING FOR MEN",
-    subtitle: "Handspun Khadi & Pure French Linen",
-    description: "Breathable charkha-spun kurtas, tailored Nehru bundis, and timeless effortless casuals.",
     ctaText: "DISCOVER MEN",
     ctaLink: "/category/men",
     ctaColor: "bg-[#1F2A44] hover:bg-[#162035] text-white",
-    image: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=1800&auto=format&fit=crop",
-    tag: "Pure Organic Cottons",
+    image: "/images/hero/slide-3.jpg",
   },
   {
     id: 4,
     headline: "LIVING IN INDIAN SPLENDOUR",
-    subtitle: "Solid Sheesham Wood & Handwoven Kilims",
-    description: "Kiln-seasoned rosewood furniture, block-printed quilts, and lost-wax Bell metal crafts.",
     ctaText: "SHOP HOME & LIVING",
     ctaLink: "/category/home-living",
     ctaColor: "bg-[#8B2331] hover:bg-[#6E1B26] text-white",
-    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1800&auto=format&fit=crop",
-    tag: "Artisanal Home 2026",
+    image: "/images/hero/slide-4.jpg",
   },
   {
     id: 5,
     headline: "SVARNIM FESTIVE ESSENTIALS",
-    subtitle: "Zari Highlights & Wild Ahimsa Silk",
-    description: "Curated heirloom ensembles woven to illuminate traditional celebrations and grand weddings.",
     ctaText: "EXPLORE SVARNIM",
     ctaLink: "/category/collection",
     ctaColor: "bg-[#8B2331] hover:bg-[#6E1B26] text-white",
-    image: "https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=1800&auto=format&fit=crop",
-    tag: "Limited Festive Edition",
+    image: "/images/hero/slide-5.jpg",
+  },
+  {
+    id: 6,
+    headline: "PURE SUMMER COTTONS",
+    ctaText: "SHOP NEW ARRIVALS",
+    ctaLink: "/category/new-arrivals",
+    ctaColor: "bg-[#1F2A44] hover:bg-[#162035] text-white",
+    image: "/images/hero/slide-6.jpg",
   },
 ];
 
@@ -85,28 +71,28 @@ const CATEGORY_TILES = [
     id: "women",
     title: "Women's Apparel",
     subtitle: "Kurtas, Sarees & Co-ords",
-    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=700&auto=format&fit=crop",
+    image: "/images/categories/tile-women.jpg",
     link: "/category/women",
   },
   {
     id: "men",
     title: "Men's Collection",
     subtitle: "Khadi Kurtas & Linen Shirts",
-    image: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=700&auto=format&fit=crop",
+    image: "/images/categories/tile-men.jpg",
     link: "/category/men",
   },
   {
     id: "home",
     title: "Home & Living",
     subtitle: "Bed Linen, Cushions & Rugs",
-    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=700&auto=format&fit=crop",
+    image: "/images/categories/tile-home.jpg",
     link: "/category/home-living",
   },
   {
     id: "furniture",
     title: "Artisanal Furniture",
     subtitle: "Solid Sheesham & Cane",
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=700&auto=format&fit=crop",
+    image: "/images/categories/tile-furniture.jpg",
     link: "/category/furniture",
   },
 ];
@@ -114,37 +100,37 @@ const CATEGORY_TILES = [
 const INSTAGRAM_POSTS = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=600&auto=format&fit=crop",
+    image: "/images/home/moment-1.jpg",
     tag: "@ananya_in_fabindia",
     caption: "Sunlit mornings in Ajrakh indigo cotton.",
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=600&auto=format&fit=crop",
+    image: "/images/home/moment-2.jpg",
     tag: "@rohit_living",
     caption: "The effortless drape of pure amber charkha khadi.",
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=600&auto=format&fit=crop",
+    image: "/images/home/moment-3.jpg",
     tag: "@delhi_art_home",
     caption: "Handwoven geometric wool kilims grounding our living room.",
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=600&auto=format&fit=crop",
+    image: "/images/home/moment-4.jpg",
     tag: "@silver_tales",
     caption: "Heirloom 925 tribal jhumkas carrying generational craft.",
   },
   {
     id: 5,
-    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=600&auto=format&fit=crop",
+    image: "/images/home/moment-5.jpg",
     tag: "@fabessentials_glow",
     caption: "Hydro-distilled Kannauj rose water for everyday refresh.",
   },
   {
     id: 6,
-    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=600&auto=format&fit=crop",
+    image: "/images/home/moment-6.jpg",
     tag: "@kiran_family",
     caption: "Festive twinning in soft organic block prints.",
   },
@@ -160,11 +146,11 @@ export default function HomePage() {
   const newArrivalsRailRef = useRef<HTMLDivElement>(null);
   const { showToast } = useToastStore();
 
-  // Auto-advance hero carousel every 5.5 seconds
+  // Auto-advance hero carousel every 5s per spec
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentHero((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 5500);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -194,7 +180,7 @@ export default function HomePage() {
   return (
     <div className="space-y-12 sm:space-y-16 pb-16">
       {/* ========================================================================= */}
-      {/* 1. HERO CAROUSEL (Full-width, edge-to-edge, uppercase navy headings & CTA) */}
+      {/* 1. HERO CAROUSEL: Headline + 1 CTA only over lifestyle image */}
       {/* ========================================================================= */}
       <section className="relative w-full h-[65vh] min-h-[480px] sm:min-h-[560px] max-h-[720px] overflow-hidden bg-[#1F2A44]">
         {HERO_SLIDES.map((slide, idx) => (
@@ -204,7 +190,7 @@ export default function HomePage() {
               idx === currentHero ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
             }`}
           >
-            {/* Background Image */}
+            {/* Background Lifestyle Image */}
             <Image
               src={slide.image}
               alt={slide.headline}
@@ -215,26 +201,18 @@ export default function HomePage() {
             />
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent sm:from-black/70 sm:via-black/40 sm:to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent sm:from-black/70 sm:via-black/35 sm:to-transparent" />
 
-            {/* Hero Text Content */}
-            <div className="relative z-20 h-full max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16 flex flex-col justify-center max-w-2xl text-white space-y-4">
-              <span className="inline-block text-[11px] uppercase tracking-[0.25em] font-bold text-[#FAF6F0] bg-[#8B2331]/80 backdrop-blur-xs px-3 py-1 w-fit">
-                {slide.tag}
-              </span>
-
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white leading-none font-sans drop-shadow-sm">
+            {/* Simplified Hero Content: Short uppercase headline + one CTA button */}
+            <div className="relative z-20 h-full max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-16 flex flex-col justify-center max-w-2xl text-white space-y-5">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white leading-tight font-sans drop-shadow-sm">
                 {slide.headline}
               </h1>
 
-              <p className="text-sm sm:text-base text-stone-200 font-light max-w-lg leading-relaxed">
-                {slide.subtitle} — {slide.description}
-              </p>
-
-              <div className="pt-2">
+              <div>
                 <Link
                   href={slide.ctaLink}
-                  className={`inline-flex items-center gap-2 px-7 py-3.5 text-xs sm:text-sm font-bold tracking-widest uppercase rounded-none transition-all shadow-lg hover:scale-105 ${slide.ctaColor}`}
+                  className={`inline-flex items-center gap-2 px-8 py-3.5 text-xs sm:text-sm font-bold tracking-widest uppercase rounded-none transition-all shadow-lg hover:scale-105 ${slide.ctaColor}`}
                 >
                   <span>{slide.ctaText}</span>
                   <ArrowRight className="w-4 h-4" />
@@ -248,26 +226,26 @@ export default function HomePage() {
         <button
           onClick={() => setCurrentHero((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
           aria-label="Previous slide"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2.5 bg-black/40 hover:bg-[#8B2331] text-white transition-colors backdrop-blur-xs rounded-none"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2.5 bg-black/40 hover:bg-[#8B2331] text-white transition-colors backdrop-blur-xs rounded-none cursor-pointer"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={() => setCurrentHero((prev) => (prev + 1) % HERO_SLIDES.length)}
           aria-label="Next slide"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2.5 bg-black/40 hover:bg-[#8B2331] text-white transition-colors backdrop-blur-xs rounded-none"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2.5 bg-black/40 hover:bg-[#8B2331] text-white transition-colors backdrop-blur-xs rounded-none cursor-pointer"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
 
-        {/* Carousel Dot Indicators (Active dot in maroon #8B2331) */}
+        {/* Carousel Dot Indicators */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center space-x-2.5">
           {HERO_SLIDES.map((_, dotIdx) => (
             <button
               key={dotIdx}
               onClick={() => setCurrentHero(dotIdx)}
               aria-label={`Go to slide ${dotIdx + 1}`}
-              className={`h-2 transition-all rounded-full ${
+              className={`h-2 transition-all rounded-full cursor-pointer ${
                 dotIdx === currentHero ? "w-8 bg-[#8B2331]" : "w-2 bg-white/60 hover:bg-white"
               }`}
             />
@@ -277,7 +255,7 @@ export default function HomePage() {
         {/* Visual Search / Camera Icon floating on right edge */}
         <button
           onClick={() => setIsVisualSearchOpen(true)}
-          className="absolute right-0 top-1/3 z-30 flex items-center gap-2 bg-white text-[#2A2A2A] hover:text-[#8B2331] px-3 py-2 text-xs font-semibold uppercase tracking-wider shadow-xl border-l-2 border-[#8B2331] transition-transform hover:-translate-x-1"
+          className="absolute right-0 top-1/3 z-30 flex items-center gap-2 bg-white text-[#2A2A2A] hover:text-[#8B2331] px-3 py-2 text-xs font-semibold uppercase tracking-wider shadow-xl border-l-2 border-[#8B2331] transition-transform hover:-translate-x-1 cursor-pointer"
           aria-label="Visual Search by Image"
         >
           <Camera className="w-4 h-4 text-[#8B2331]" />
@@ -293,7 +271,7 @@ export default function HomePage() {
               <h3 className="text-sm font-bold uppercase tracking-wider text-[#8B2331] flex items-center gap-2">
                 <Camera className="w-4 h-4" /> Visual Search
               </h3>
-              <button onClick={() => setIsVisualSearchOpen(false)} className="text-[#6B6B6B] hover:text-[#2A2A2A]">✕</button>
+              <button onClick={() => setIsVisualSearchOpen(false)} className="text-[#6B6B6B] hover:text-[#2A2A2A] cursor-pointer">✕</button>
             </div>
             <p className="text-xs text-[#6B6B6B]">
               Upload a picture of any outfit, saree, or home decor to find matching handcrafted pieces across our catalog.
@@ -306,7 +284,7 @@ export default function HomePage() {
             <div className="flex justify-end gap-2 pt-2">
               <button
                 onClick={() => setIsVisualSearchOpen(false)}
-                className="px-4 py-2 bg-[#FAF6F0] text-xs font-semibold text-[#2A2A2A] hover:bg-[#E6E0D8]"
+                className="px-4 py-2 bg-[#FAF6F0] text-xs font-semibold text-[#2A2A2A] hover:bg-[#E6E0D8] cursor-pointer"
               >
                 Close
               </button>
@@ -316,7 +294,7 @@ export default function HomePage() {
       )}
 
       {/* ========================================================================= */}
-      {/* 2. CATEGORY TILE GRID (Row of 3-4 image tiles with subtle zoom on hover) */}
+      {/* 2. CATEGORY TILE GRID */}
       {/* ========================================================================= */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -324,7 +302,7 @@ export default function HomePage() {
             <Link
               key={tile.id}
               href={tile.link}
-              className="group relative aspect-[3/4] overflow-hidden bg-[#F5EFE6] border border-[#E6E0D8] shadow-xs"
+              className="group relative aspect-[3/4] overflow-hidden bg-[#F5EFE6] border border-[#E6E0D8] shadow-xs block"
             >
               <Image
                 src={tile.image}
@@ -389,14 +367,14 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. FEATURED COLLECTION BANNERS ("Svarnim" Festive Collection) */}
+      {/* 4. FEATURED CAPSULE BANNER (Svarnim Festive Edit) */}
       {/* ========================================================================= */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden bg-[#1F2A44] border border-[#E6E0D8]">
           <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
             <div className="lg:col-span-7 relative h-[280px] sm:h-[400px] w-full">
               <Image
-                src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop"
+                src="/images/home/svarnim-banner.jpg"
                 alt="Svarnim Festive Collection"
                 fill
                 className="object-cover"
@@ -428,7 +406,7 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. NEW ARRIVALS PRODUCT CAROUSEL (Horizontal Scrollable Rail) */}
+      {/* 5. NEW ARRIVALS PRODUCT CAROUSEL (Horizontal Rail) */}
       {/* ========================================================================= */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between mb-6 pb-2 border-b border-[#E6E0D8]">
@@ -443,14 +421,14 @@ export default function HomePage() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => handleScrollRail(newArrivalsRailRef, "left")}
-              className="p-2 border border-[#E6E0D8] bg-white hover:border-[#8B2331] hover:text-[#8B2331] transition-colors"
+              className="p-2 border border-[#E6E0D8] bg-white hover:border-[#8B2331] hover:text-[#8B2331] transition-colors cursor-pointer"
               aria-label="Scroll New Arrivals Left"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={() => handleScrollRail(newArrivalsRailRef, "right")}
-              className="p-2 border border-[#E6E0D8] bg-white hover:border-[#8B2331] hover:text-[#8B2331] transition-colors"
+              className="p-2 border border-[#E6E0D8] bg-white hover:border-[#8B2331] hover:text-[#8B2331] transition-colors cursor-pointer"
               aria-label="Scroll New Arrivals Right"
             >
               <ChevronRight className="w-4 h-4" />
@@ -479,7 +457,7 @@ export default function HomePage() {
           {/* Split 1: Women */}
           <div className="relative aspect-[4/5] overflow-hidden group bg-[#FAF6F0] border border-[#E6E0D8]">
             <Image
-              src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=800&auto=format&fit=crop"
+              src="/images/home/split-women.jpg"
               alt="Women Ethnic Wear"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -501,7 +479,7 @@ export default function HomePage() {
           {/* Split 2: Men */}
           <div className="relative aspect-[4/5] overflow-hidden group bg-[#FAF6F0] border border-[#E6E0D8]">
             <Image
-              src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=800&auto=format&fit=crop"
+              src="/images/home/split-men.jpg"
               alt="Men Tailoring"
               fill
               className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
@@ -523,7 +501,7 @@ export default function HomePage() {
           {/* Split 3: Home */}
           <div className="relative aspect-[4/5] overflow-hidden group bg-[#FAF6F0] border border-[#E6E0D8]">
             <Image
-              src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop"
+              src="/images/home/split-home.jpg"
               alt="Artisanal Home & Living"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -545,7 +523,7 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. FABFAMILY / LOYALTY PROGRAM CALLOUT STRIP */}
+      {/* 7. FABFAMILY STRIP (Fixed links: both point to /fabfamily) */}
       {/* ========================================================================= */}
       <section className="bg-[#1F2A44] text-white py-10 px-4 sm:px-8 border-y border-[#E6E0D8]">
         <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
@@ -557,18 +535,18 @@ export default function HomePage() {
               Earn Rewards on Every Handcrafted Piece
             </h3>
             <p className="text-xs sm:text-sm text-stone-300 font-light max-w-xl">
-              Enjoy complimentary gift packaging, early pre-sale access, artisan workshop invites, and earn points on every online & in-store purchase.
+              Enjoy complimentary gift packaging, early pre-sale access, artisan workshop invites, and earn Fabcoins on every online & in-store purchase.
             </p>
           </div>
           <div className="flex items-center gap-3 shrink-0">
             <Link
-              href="/account"
+              href="/fabfamily"
               className="px-6 py-3 bg-[#8B2331] hover:bg-[#6E1B26] text-white text-xs font-bold uppercase tracking-wider transition-colors"
             >
               Join Fabfamily
             </Link>
             <Link
-              href="/category/collection"
+              href="/fabfamily"
               className="px-6 py-3 border border-stone-400 hover:border-white text-white text-xs font-semibold uppercase tracking-wider transition-colors"
             >
               Learn More
@@ -593,14 +571,14 @@ export default function HomePage() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => handleScrollRail(trendingRailRef, "left")}
-              className="p-2 border border-[#E6E0D8] bg-white hover:border-[#8B2331] hover:text-[#8B2331] transition-colors"
+              className="p-2 border border-[#E6E0D8] bg-white hover:border-[#8B2331] hover:text-[#8B2331] transition-colors cursor-pointer"
               aria-label="Scroll Trending Left"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={() => handleScrollRail(trendingRailRef, "right")}
-              className="p-2 border border-[#E6E0D8] bg-white hover:border-[#8B2331] hover:text-[#8B2331] transition-colors"
+              className="p-2 border border-[#E6E0D8] bg-white hover:border-[#8B2331] hover:text-[#8B2331] transition-colors cursor-pointer"
               aria-label="Scroll Trending Right"
             >
               <ChevronRight className="w-4 h-4" />
@@ -622,14 +600,14 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 9. EDITORIAL / CRAFT-STORY ("Celebrate India") */}
+      {/* 9. EDITORIAL / CRAFT STORY ("Celebrate India") */}
       {/* ========================================================================= */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#F5EFE6] border border-[#E6E0D8] p-8 sm:p-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-5 relative aspect-[4/3] sm:aspect-square overflow-hidden border border-[#E6E0D8]">
               <Image
-                src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop"
+                src="/images/home/artisan-blockprint.jpg"
                 alt="Artisan block printing with natural dyes"
                 fill
                 className="object-cover"
@@ -664,7 +642,7 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 10. INSTAGRAM / SOCIAL GRID ("@fabindia" image mosaic) */}
+      {/* 10. INSTAGRAM GRID (#FabindiaMoments) */}
       {/* ========================================================================= */}
       <section className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
@@ -704,7 +682,7 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 11. NEWSLETTER SIGNUP STRIP (Beige background) */}
+      {/* 11. NEWSLETTER SIGNUP STRIP */}
       {/* ========================================================================= */}
       <section className="bg-[#F5EFE6] border-y border-[#E6E0D8] py-12 px-4 sm:px-8">
         <div className="max-w-xl mx-auto text-center space-y-4">
@@ -735,7 +713,7 @@ export default function HomePage() {
               />
               <button
                 type="submit"
-                className="px-6 py-3 bg-[#8B2331] hover:bg-[#6E1B26] text-white text-xs font-bold uppercase tracking-wider transition-colors shrink-0"
+                className="px-6 py-3 bg-[#8B2331] hover:bg-[#6E1B26] text-white text-xs font-bold uppercase tracking-wider transition-colors shrink-0 cursor-pointer"
               >
                 Subscribe
               </button>
@@ -745,14 +723,14 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* FLOATING WHATSAPP CHAT BUTTON (Green circle, bottom-right, fixed) */}
+      {/* FLOATING WHATSAPP CHAT BUTTON (Bottom-right, green) */}
       {/* ========================================================================= */}
       <a
         href="https://wa.me/919810012345?text=Hello%20Fabindia,%20I%20have%20a%20query%20regarding%20my%20order"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Fabindia on WhatsApp"
-        className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 z-40 w-13 h-13 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white flex items-center justify-center shadow-2xl hover:scale-110 transition-transform"
+        className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-40 w-13 h-13 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white flex items-center justify-center shadow-2xl hover:scale-110 transition-transform cursor-pointer"
       >
         <svg className="w-7 h-7 fill-currentColor" viewBox="0 0 24 24">
           <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.073-2.18-.541-1.894-.784-3.111-2.715-3.206-2.842-.095-.127-.768-1.022-.768-1.95 0-.928.487-1.385.66-1.576.174-.191.38-.239.507-.239.127 0 .254.001.365.006.118.005.277-.044.433.332.162.391.554 1.353.603 1.452.049.099.082.215.016.345-.066.13-.099.211-.197.325-.098.114-.207.255-.296.342-.099.098-.202.204-.087.401.115.197.512.846 1.097 1.368.754.673 1.389.881 1.587.98.198.099.314.083.43-.05.116-.133.496-.577.628-.775.133-.198.265-.165.447-.099.182.066 1.155.545 1.353.644.198.099.33.149.38.232.049.083.049.48-.095.885z"/>

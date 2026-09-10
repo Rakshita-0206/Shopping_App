@@ -6,7 +6,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: "New Arrivals",
     slug: "new-arrivals",
     description: "The latest seasonal arrivals featuring handwoven silks, breezy summer linens, artisanal home decor, and contemporary silhouettes.",
-    bannerImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1400&auto=format&fit=crop",
+    bannerImage: "/images/categories/new-arrivals-banner.jpg",
     subcategories: [
       {
         title: "Women's Fresh Drops",
@@ -21,7 +21,7 @@ export const CATEGORIES: CategoryItem[] = [
         items: ["Botanical Bedcovers", "Hand-cast Brass Lamps", "Indigo Cushion Sets"],
       },
     ],
-    featuredImage: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=600&auto=format&fit=crop",
+    featuredImage: "/images/categories/new-arrivals-featured.jpg",
     featuredTitle: "Svarnim Festive Edit 2026",
   },
   {
@@ -29,7 +29,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: "Women",
     slug: "women",
     description: "Handcrafted kurtas, artisanal Chanderi & Tussar sarees, suit sets, dupattas, and contemporary ethnic silhouettes spun by master weavers.",
-    bannerImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1400&auto=format&fit=crop",
+    bannerImage: "/images/categories/women-banner.jpg",
     subcategories: [
       {
         title: "Apparel",
@@ -44,7 +44,7 @@ export const CATEGORIES: CategoryItem[] = [
         items: ["Silver Jewellery", "Handcrafted Bags & Potlis", "Stoles & Scarves", "Artisanal Juttis & Footwear"],
       },
     ],
-    featuredImage: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=600&auto=format&fit=crop",
+    featuredImage: "/images/categories/women-featured.jpg",
     featuredTitle: "The Indigo & Ajrakh Story",
   },
   {
@@ -52,7 +52,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: "Men",
     slug: "men",
     description: "Timeless handcrafted shirts, organic khadi kurtas, tailored Nehru jackets (Bundis), and breathable pure linen essentials.",
-    bannerImage: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=1400&auto=format&fit=crop",
+    bannerImage: "/images/categories/men-banner.jpg",
     subcategories: [
       {
         title: "Kurtas & Shirts",
@@ -67,7 +67,7 @@ export const CATEGORIES: CategoryItem[] = [
         items: ["Pure Organic Cotton", "Tussar & Matka Silk", "Handspun Charkha Khadi", "Handblock Prints"],
       },
     ],
-    featuredImage: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=600&auto=format&fit=crop",
+    featuredImage: "/images/categories/men-featured.jpg",
     featuredTitle: "Handspun Khadi Collection",
   },
   {
@@ -75,7 +75,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: "Kids",
     slug: "kids",
     description: "Soft, gentle organic cottons, playful block prints, and breathable festive wear crafted for young comfort.",
-    bannerImage: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1400&auto=format&fit=crop",
+    bannerImage: "/images/categories/kids-banner.jpg",
     subcategories: [
       {
         title: "Girls",
@@ -90,7 +90,7 @@ export const CATEGORIES: CategoryItem[] = [
         items: ["Organic Muslin Jabs", "Soft Swaddles", "Playwear Sets"],
       },
     ],
-    featuredImage: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=600&auto=format&fit=crop",
+    featuredImage: "/images/categories/kids-featured.jpg",
     featuredTitle: "Gentle Pure Cottons",
   },
   {
@@ -98,7 +98,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: "Home & Living",
     slug: "home-living",
     description: "Artisanal handwoven kilim rugs, block-printed bedcovers, hand-thrown pottery, and timeless brass decor.",
-    bannerImage: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1400&auto=format&fit=crop",
+    bannerImage: "/images/categories/home-banner.jpg",
     subcategories: [
       {
         title: "Bed Linen & Bath",
@@ -113,7 +113,7 @@ export const CATEGORIES: CategoryItem[] = [
         items: ["Handwoven Kilims & Durries", "Dhokra Brass Crafts", "Handmade Ceramics", "Copper Dinnerware"],
       },
     ],
-    featuredImage: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600&auto=format&fit=crop",
+    featuredImage: "/images/categories/home-featured.jpg",
     featuredTitle: "Handwoven Kilims & Dhurries",
   },
   {
@@ -121,7 +121,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: "Furniture",
     slug: "furniture",
     description: "Solid seasoned Sheesham and teak wood furniture with traditional brass inlay, rattan cane webbing, and hand-carved details.",
-    bannerImage: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1400&auto=format&fit=crop",
+    bannerImage: "/images/categories/furniture-banner.jpg",
     subcategories: [
       {
         title: "Living Room",
@@ -136,7 +136,7 @@ export const CATEGORIES: CategoryItem[] = [
         items: ["Carved Wall Mirrors", "Wooden Peg Tables", "Magazine Racks", "Room Dividers & Screens"],
       },
     ],
-    featuredImage: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=80&w=600&auto=format&fit=crop",
+    featuredImage: "/images/categories/furniture-featured.jpg",
     featuredTitle: "Sheesham Wood Elegance",
   },
   {
@@ -144,7 +144,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: "Food",
     slug: "food",
     description: "Certified organic pantry staples, raw forest honey, stone-ground spices, single-origin teas, and cold-pressed oils from farmer collectives.",
-    bannerImage: "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=1400&auto=format&fit=crop",
+    bannerImage: "/images/categories/food-banner.jpg",
     subcategories: [
       {
         title: "Organic Pantry",
@@ -159,7 +159,7 @@ export const CATEGORIES: CategoryItem[] = [
         items: ["Handmade Mango Pickle", "Amla Murabba", "Roasted Multi-grain Crisps", "Organic Jaggery"],
       },
     ],
-    featuredImage: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=600&auto=format&fit=crop",
+    featuredImage: "/images/categories/food-featured.jpg",
     featuredTitle: "Wild Forest Certified Organics",
   },
   {
@@ -167,7 +167,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: "Collection",
     slug: "collection",
     description: "Curated seasonal capsules and heritage craft stories celebrating the timeless diversity of India.",
-    bannerImage: "https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=1400&auto=format&fit=crop",
+    bannerImage: "/images/categories/collection-banner.jpg",
     subcategories: [
       {
         title: "Signature Capsules",
@@ -178,7 +178,7 @@ export const CATEGORIES: CategoryItem[] = [
         items: ["The Artisan Living Room", "Sunlit Verandah", "Handcrafted Dining Sanctuary"],
       },
     ],
-    featuredImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=600&auto=format&fit=crop",
+    featuredImage: "/images/categories/collection-featured.jpg",
     featuredTitle: "Svarnim Festive Collection",
   },
   {
@@ -186,7 +186,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: "Services",
     slug: "services",
     description: "Personal styling, bespoke tailoring, home interior consultations, and corporate artisanal gifting.",
-    bannerImage: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1400&auto=format&fit=crop",
+    bannerImage: "/images/categories/services-banner.jpg",
     subcategories: [
       {
         title: "Customer Services",
@@ -197,7 +197,7 @@ export const CATEGORIES: CategoryItem[] = [
         items: ["Corporate Artisanal Gifting", "Wedding Registry", "Fabindia Gift Cards"],
       },
     ],
-    featuredImage: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=600&auto=format&fit=crop",
+    featuredImage: "/images/categories/services-featured.jpg",
     featuredTitle: "Custom Tailoring & Styling",
   },
   {
@@ -205,7 +205,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: "Fabfamily",
     slug: "fabfamily",
     description: "Join the Fabfamily loyalty program. Earn points on every handcrafted purchase and unlock exclusive preview access.",
-    bannerImage: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=1400&auto=format&fit=crop",
+    bannerImage: "/images/categories/women-banner.jpg",
     subcategories: [
       {
         title: "Membership Tiers",
@@ -216,7 +216,7 @@ export const CATEGORIES: CategoryItem[] = [
         items: ["Exclusive Pre-Sale Access", "Artisan Workshop Invites", "Birthday Bonus Rewards"],
       },
     ],
-    featuredImage: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=600&auto=format&fit=crop",
+    featuredImage: "/images/categories/women-featured.jpg",
     featuredTitle: "Fabfamily Rewards & Perks",
   },
   {
@@ -224,7 +224,7 @@ export const CATEGORIES: CategoryItem[] = [
     name: "Sale",
     slug: "sale",
     description: "Exclusive discounts up to 50% off on authentic handcrafted kurtas, sarees, home linen, and wooden furniture.",
-    bannerImage: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1400&auto=format&fit=crop",
+    bannerImage: "/images/categories/sale-banner.jpg",
     subcategories: [
       {
         title: "Discount Offers",
@@ -235,20 +235,20 @@ export const CATEGORIES: CategoryItem[] = [
         items: ["Women's Apparel Sale", "Men's Kurta Deals", "Home Decor Clearance", "Kids Festive Savings"],
       },
     ],
-    featuredImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=600&auto=format&fit=crop",
+    featuredImage: "/images/categories/sale-featured.jpg",
     featuredTitle: "End of Season Heritage Sale",
   },
 ];
 
 // Circular category thumbnails for homepage quick navigation
 export const QUICK_CATEGORIES = [
-  { id: "kurtas", name: "Kurtas", image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=300&auto=format&fit=crop", href: "/category/women?sub=Kurtas%20%26%20Tunics" },
-  { id: "sarees", name: "Sarees", image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=300&auto=format&fit=crop", href: "/category/women?sub=Sarees%20%26%20Blouses" },
-  { id: "men-kurtas", name: "Men's Wear", image: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=300&auto=format&fit=crop", href: "/category/men" },
-  { id: "kids", name: "Kids", image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=300&auto=format&fit=crop", href: "/category/kids" },
-  { id: "bed-linen", name: "Bed Linen", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=300&auto=format&fit=crop", href: "/category/home-living" },
-  { id: "cushions", name: "Cushions", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=300&auto=format&fit=crop", href: "/category/home-living" },
-  { id: "furniture", name: "Furniture", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=300&auto=format&fit=crop", href: "/category/furniture" },
-  { id: "organic-food", name: "Food & Teas", image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=300&auto=format&fit=crop", href: "/category/food" },
-  { id: "sale", name: "Sale Up To 50%", image: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=300&auto=format&fit=crop", href: "/category/sale" },
+  { id: "kurtas", name: "Kurtas", image: "/images/categories/qc-kurtas.jpg", href: "/category/women?sub=Kurtas%20%26%20Tunics" },
+  { id: "sarees", name: "Sarees", image: "/images/categories/qc-sarees.jpg", href: "/category/women?sub=Sarees%20%26%20Blouses" },
+  { id: "men-kurtas", name: "Men's Wear", image: "/images/categories/qc-men.jpg", href: "/category/men" },
+  { id: "kids", name: "Kids", image: "/images/categories/qc-kids.jpg", href: "/category/kids" },
+  { id: "bed-linen", name: "Bed Linen", image: "/images/categories/qc-bedlinen.jpg", href: "/category/home-living" },
+  { id: "cushions", name: "Cushions", image: "/images/categories/qc-cushions.jpg", href: "/category/home-living" },
+  { id: "furniture", name: "Furniture", image: "/images/categories/qc-furniture.jpg", href: "/category/furniture" },
+  { id: "organic-food", name: "Food & Teas", image: "/images/categories/qc-food.jpg", href: "/category/food" },
+  { id: "sale", name: "Sale Up To 50%", image: "/images/categories/qc-sale.jpg", href: "/category/sale" },
 ];

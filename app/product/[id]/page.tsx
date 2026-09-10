@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, use } from "react";
+import { useState, useEffect, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -54,6 +54,24 @@ export default function ProductDetailPage({ params }: PageProps) {
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomPos, setZoomPos] = useState({ x: 0, y: 0 });
+  const [recentlyViewed, setRecentlyViewed] = useState<typeof PRODUCTS>([]);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("fabindia_recently_viewed");
+      const ids: string[] = stored ? JSON.parse(stored) : [];
+      const recent = ids
+        .filter((vid) => vid !== product.id)
+        .map((vid) => PRODUCTS.find((p) => p.id === vid))
+        .filter(Boolean) as typeof PRODUCTS;
+      setRecentlyViewed(recent.slice(0, 4));
+
+      const updated = [product.id, ...ids.filter((vid) => vid !== product.id)].slice(0, 10);
+      localStorage.setItem("fabindia_recently_viewed", JSON.stringify(updated));
+    } catch {
+      // ignore in SSR / storage disabled environments
+    }
+  }, [product.id]);
 
   const addItem = useCartStore((state) => state.addItem);
   const { isInWishlist, toggleWishlist } = useWishlistStore();
@@ -460,6 +478,25 @@ export default function ProductDetailPage({ params }: PageProps) {
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
               {completeLookProducts.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Recently Viewed Rail */}
+        {recentlyViewed.length > 0 && (
+          <div className="mt-16 pt-10 border-t border-[#E6E0D8]">
+            <div className="text-center mb-8">
+              <span className="text-[11px] uppercase tracking-[0.25em] font-bold text-[#8B2331]">
+                Your Browsing History
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif text-[#2A2A2A] mt-1">
+                Recently Viewed
+              </h2>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+              {recentlyViewed.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}
             </div>

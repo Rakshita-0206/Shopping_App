@@ -22,6 +22,7 @@ import ProductCard from "@/components/ui/ProductCard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import { useWishlistStore } from "@/store/wishlistStore";
 import { useCurrencyStore } from "@/store/currencyStore";
+import { useFabfamilyStore } from "@/store/fabfamilyStore";
 
 interface DbOrderItem {
   id: string;
@@ -52,6 +53,18 @@ function AccountContent() {
 
   const { items: wishlistIds } = useWishlistStore();
   const { formatPrice } = useCurrencyStore();
+  const {
+    name: memberName,
+    email: memberEmail,
+    mobile: memberMobile,
+    tier: memberTier,
+    fabcoins,
+    transactions,
+    getNextTierProgress,
+    getTierRate,
+  } = useFabfamilyStore();
+
+  const nextTierProgress = getNextTierProgress();
 
   useEffect(() => {
     setMounted(true);
@@ -76,30 +89,41 @@ function AccountContent() {
       <div className="bg-white border border-[#E6E0D8] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xs">
         <div className="flex items-center gap-4 text-center sm:text-left">
           <div className="w-16 h-16 rounded-full bg-[#FAF6F0] border-2 border-[#8B2331] flex items-center justify-center font-serif text-2xl font-bold text-[#8B2331]">
-            PS
+            {memberName
+              ? memberName
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")
+                  .slice(0, 2)
+                  .toUpperCase()
+              : "PS"}
           </div>
           <div>
             <h1 className="font-serif text-xl sm:text-2xl text-[#2A2A2A] font-bold">
-              Priya Sharma
+              {memberName || "Priya Sharma"}
             </h1>
-            <p className="text-xs text-[#6B6B6B]">priya.sharma@example.com • +91 9876543210</p>
+            <p className="text-xs text-[#6B6B6B]">
+              {memberEmail || "priya.sharma@example.com"} • +91 {memberMobile || "9876543210"}
+            </p>
             <div className="flex items-center gap-1.5 mt-1.5 justify-center sm:justify-start">
               <span className="text-[10px] font-bold uppercase tracking-wider bg-[#F5EFE6] text-[#8B2331] px-2 py-0.5 border border-[#E6E0D8]">
-                Fabfamily Gold Member
+                Fabfamily {memberTier} Member
               </span>
             </div>
           </div>
         </div>
 
-        {/* Fabfamily Points Widget */}
+        {/* Fabfamily Fabcoins Widget */}
         <div className="bg-[#FAF6F0] border border-[#E6E0D8] p-4 text-center sm:text-right min-w-[200px]">
           <span className="text-[10px] uppercase font-bold tracking-wider text-[#6B6B6B]">
-            Available Fabfamily Points
+            Available Fabcoins
           </span>
           <div className="text-2xl font-serif font-bold text-[#8B2331]">
-            1,450 Pts
+            {fabcoins.toLocaleString("en-IN")} Fabcoins
           </div>
-          <p className="text-[11px] text-stone-500 mt-0.5">Worth {formatPrice(1450)} on next order</p>
+          <p className="text-[11px] text-stone-500 mt-0.5">
+            Worth {formatPrice(fabcoins)} on next order (1 coin = ₹1)
+          </p>
         </div>
       </div>
 
@@ -109,7 +133,7 @@ function AccountContent() {
         <aside className="lg:col-span-3 space-y-1">
           {[
             { id: "orders", label: `My Orders (${orders.length})`, icon: Package },
-            { id: "fabfamily", label: "Fabfamily Points", icon: Award },
+            { id: "fabfamily", label: "Fabfamily Fabcoins", icon: Award },
             { id: "wishlist", label: `Saved Wishlist (${wishlistIds.length})`, icon: Heart },
             { id: "addresses", label: "Saved Addresses", icon: MapPin },
             { id: "profile", label: "Account Profile", icon: User },
@@ -224,7 +248,7 @@ function AccountContent() {
             </div>
           )}
 
-          {/* FABFAMILY POINTS TAB */}
+          {/* FABFAMILY FABCOINS TAB */}
           {activeTab === "fabfamily" && (
             <div className="space-y-6">
               <div className="pb-3 border-b border-[#E6E0D8] flex items-center justify-between">
@@ -232,36 +256,101 @@ function AccountContent() {
                   <h2 className="font-serif text-xl font-bold text-[#2A2A2A]">
                     Fabfamily Loyalty Rewards
                   </h2>
-                  <p className="text-xs text-[#6B6B6B]">Earn 5 points for every ₹100 spent</p>
+                  <p className="text-xs text-[#6B6B6B]">
+                    Earning rate: {Math.round(getTierRate(memberTier) * 100)}% Fabcoins on every order across 350+ stores and fabindia.com
+                  </p>
                 </div>
-                <span className="px-3 py-1 bg-[#8B2331] text-white text-xs font-bold uppercase">
-                  Gold Tier
+                <span className="px-3 py-1 bg-[#8B2331] text-white text-xs font-bold uppercase tracking-wider">
+                  {memberTier} Tier
                 </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="p-4 bg-[#FAF6F0] border border-[#E6E0D8] text-center space-y-1">
-                  <span className="text-[10px] uppercase tracking-wider text-[#6B6B6B] font-bold">Total Points</span>
-                  <div className="text-2xl font-serif font-bold text-[#8B2331]">1,450</div>
+                  <span className="text-[10px] uppercase tracking-wider text-[#6B6B6B] font-bold">
+                    Available Fabcoins
+                  </span>
+                  <div className="text-2xl font-serif font-bold text-[#8B2331]">
+                    {fabcoins.toLocaleString("en-IN")}
+                  </div>
+                  <span className="text-[10px] text-stone-500">1 Fabcoin = ₹1</span>
                 </div>
                 <div className="p-4 bg-[#FAF6F0] border border-[#E6E0D8] text-center space-y-1">
-                  <span className="text-[10px] uppercase tracking-wider text-[#6B6B6B] font-bold">Redeemable Value</span>
-                  <div className="text-2xl font-serif font-bold text-emerald-700">{formatPrice(1450)}</div>
+                  <span className="text-[10px] uppercase tracking-wider text-[#6B6B6B] font-bold">
+                    Redeemable Value
+                  </span>
+                  <div className="text-2xl font-serif font-bold text-emerald-700">
+                    {formatPrice(fabcoins)}
+                  </div>
+                  <span className="text-[10px] text-stone-500">Apply directly at checkout</span>
                 </div>
                 <div className="p-4 bg-[#FAF6F0] border border-[#E6E0D8] text-center space-y-1">
-                  <span className="text-[10px] uppercase tracking-wider text-[#6B6B6B] font-bold">Points Expiring Soon</span>
-                  <div className="text-2xl font-serif font-bold text-[#2A2A2A]">0 Pts</div>
+                  <span className="text-[10px] uppercase tracking-wider text-[#6B6B6B] font-bold">
+                    Next Tier Status
+                  </span>
+                  <div className="text-sm font-serif font-bold text-[#2A2A2A] mt-1">
+                    {nextTierProgress.nextTier ? `${nextTierProgress.nextTier} (${nextTierProgress.percent}%)` : "Top Tier (Black)"}
+                  </div>
+                  {nextTierProgress.nextTier && (
+                    <span className="text-[10px] text-stone-500">
+                      Spend {formatPrice(nextTierProgress.spendNeeded)} to upgrade
+                    </span>
+                  )}
                 </div>
               </div>
 
+              {/* Progress Bar */}
+              {nextTierProgress.nextTier && (
+                <div className="bg-[#FAF6F0] p-4 border border-[#E6E0D8] space-y-2">
+                  <div className="flex justify-between text-xs">
+                    <span className="font-semibold text-[#2A2A2A]">Progress to {nextTierProgress.nextTier} Tier</span>
+                    <span className="text-[#8B2331] font-bold">{nextTierProgress.percent}%</span>
+                  </div>
+                  <div className="w-full bg-[#E6E0D8] h-2 rounded-full overflow-hidden">
+                    <div
+                      className="bg-[#8B2331] h-full transition-all duration-500"
+                      style={{ width: `${nextTierProgress.percent}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* Tier Benefits */}
               <div className="border border-[#E6E0D8] p-4 bg-white space-y-2 text-xs">
-                <h3 className="font-bold text-[#2A2A2A] uppercase tracking-wider">Your Gold Tier Benefits:</h3>
-                <ul className="space-y-1 text-[#6B6B6B] list-disc pl-4">
-                  <li>Complimentary signature cloth gift bag on all orders.</li>
-                  <li>Early access to Svarnim & festive collections.</li>
-                  <li>Invitations to private artisan weaving and block-printing workshops.</li>
-                  <li>Dedicated personal shopper styling service.</li>
+                <h3 className="font-bold text-[#2A2A2A] uppercase tracking-wider">
+                  Your {memberTier} Tier Privileges:
+                </h3>
+                <ul className="space-y-1.5 text-[#6B6B6B] list-disc pl-4">
+                  <li>Earn {Math.round(getTierRate(memberTier) * 100)}% Fabcoins on every qualifying handcrafted purchase.</li>
+                  <li>Exclusive preview access to festive collections and annual sale events.</li>
+                  <li>Complimentary signature cloth gift bags on eligible orders.</li>
+                  <li>Special invitations to regional artisan weaving & indigo masterclasses.</li>
+                  {memberTier === "Black" && <li>Personal Relationship Manager & in-home styling consultations.</li>}
                 </ul>
+              </div>
+
+              {/* Recent Fabcoins Activity */}
+              <div className="space-y-3 pt-2">
+                <h3 className="font-serif text-base font-bold text-[#2A2A2A]">
+                  Recent Fabcoins Activity
+                </h3>
+                {transactions && transactions.length > 0 ? (
+                  <div className="border border-[#E6E0D8] divide-y divide-[#E6E0D8] text-xs">
+                    {transactions.map((txn) => (
+                      <div key={txn.id} className="p-3 flex items-center justify-between bg-white hover:bg-[#FAF6F0]/50 transition-colors">
+                        <div>
+                          <p className="font-medium text-[#2A2A2A]">{txn.note}</p>
+                          <span className="text-[11px] text-[#6B6B6B]">{txn.date}</span>
+                        </div>
+                        <div className={`font-bold font-mono text-sm ${txn.type === "earn" ? "text-emerald-700" : "text-[#8B2331]"}`}>
+                          {txn.type === "earn" ? `+${txn.coins}` : `-${txn.coins}`} Fabcoins
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-xs text-[#6B6B6B]">No recent Fabcoins activity recorded.</p>
+                )}
               </div>
             </div>
           )}

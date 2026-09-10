@@ -173,20 +173,46 @@ export default function StoreLocatorPage() {
           {filteredStores.map((store) => (
             <div
               key={store.id}
-              className="bg-white border border-[#E6E0D8] p-5 space-y-4 hover:border-[#8B2331] transition-all shadow-xs flex flex-col justify-between"
+              className="bg-white border border-[#E6E0D8] overflow-hidden hover:border-[#8B2331] transition-all shadow-xs flex flex-col justify-between group"
             >
-              <div className="space-y-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#8B2331] bg-[#FAF6F0] px-2 py-0.5 border border-[#E6E0D8] inline-block">
-                  {store.type}
-                </span>
-                <h3 className="font-serif text-base font-bold text-[#2A2A2A] leading-snug">
-                  {store.name}
-                </h3>
-                <div className="flex items-start gap-2 text-xs text-[#6B6B6B] pt-1">
-                  <MapPin className="w-4 h-4 text-[#8B2331] shrink-0 mt-0.5" />
-                  <span>{store.address}</span>
+              {/* Stylized Map Preview Placeholder */}
+              <div className="relative h-28 w-full bg-[#F4EFE6] overflow-hidden border-b border-[#E6E0D8]">
+                <svg className="absolute inset-0 w-full h-full opacity-50" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <pattern id={`map-grid-${store.id}`} width="24" height="24" patternUnits="userSpaceOnUse">
+                      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#D7CEC2" strokeWidth="1" />
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill={`url(#map-grid-${store.id})`} />
+                  <path d="M -20 70 Q 120 20, 240 80 T 400 40" fill="none" stroke="#E2D6C5" strokeWidth="5" />
+                  <path d="M 80 -10 Q 120 60, 160 140" fill="none" stroke="#E2D6C5" strokeWidth="4" />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="relative flex items-center justify-center">
+                    <span className="absolute w-8 h-8 rounded-full bg-[#8B2331]/25 animate-ping" />
+                    <div className="relative w-8 h-8 rounded-full bg-[#8B2331] text-white flex items-center justify-center shadow-md">
+                      <MapPin className="w-4 h-4 fill-white" />
+                    </div>
+                  </div>
                 </div>
+                <span className="absolute bottom-2 right-2 text-[9px] font-bold uppercase tracking-wider text-[#8B2331] bg-white/90 px-2 py-0.5 border border-[#E6E0D8] backdrop-blur-xs">
+                  {store.city}
+                </span>
               </div>
+
+              <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#8B2331] bg-[#FAF6F0] px-2 py-0.5 border border-[#E6E0D8] inline-block">
+                    {store.type}
+                  </span>
+                  <h3 className="font-serif text-base font-bold text-[#2A2A2A] leading-snug">
+                    {store.name}
+                  </h3>
+                  <div className="flex items-start gap-2 text-xs text-[#6B6B6B] pt-1">
+                    <MapPin className="w-4 h-4 text-[#8B2331] shrink-0 mt-0.5" />
+                    <span>{store.address}</span>
+                  </div>
+                </div>
 
               <div className="space-y-2 pt-3 border-t border-[#E6E0D8] text-xs text-[#6B6B6B]">
                 <div className="flex items-center gap-2">
@@ -212,6 +238,7 @@ export default function StoreLocatorPage() {
                 </div>
               </div>
             </div>
+          </div>
           ))}
         </div>
       </div>

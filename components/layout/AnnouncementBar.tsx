@@ -23,7 +23,7 @@ const ANNOUNCEMENTS = [
   {
     text: "Join Fabfamily & unlock 10% off your first handcrafted order with code FAB10.",
     linkText: "Join Now",
-    linkUrl: "/category/sale",
+    linkUrl: "/fabfamily",
   },
 ];
 

@@ -11,7 +11,6 @@ import {
   ArrowRight,
   ShieldCheck,
   X,
-  Calculator,
 } from "lucide-react";
 import { useToastStore } from "@/store/toastStore";
 
@@ -155,7 +154,6 @@ export default function FabFamilyPage() {
   const [mobileNumber, setMobileNumber] = useState("");
   const [fullName, setFullName] = useState("");
   const [isJoined, setIsJoined] = useState(false);
-  const [annualSpend, setAnnualSpend] = useState<number>(35000);
   const { showToast } = useToastStore();
 
   // Auto-advance carousel every 5s
@@ -174,15 +172,6 @@ export default function FabFamilyPage() {
     setCurrentSlide((prev) => (prev - 1 + CAROUSEL_SLIDES.length) % CAROUSEL_SLIDES.length);
   };
 
-  // Calculate dynamic tier from annual spend
-  const calculatedTier = () => {
-    if (annualSpend >= 200000) return { name: "BLACK", rate: 10, coins: Math.round(annualSpend * 0.1) };
-    if (annualSpend >= 100000) return { name: "PLATINUM", rate: 5, coins: Math.round(annualSpend * 0.05) };
-    if (annualSpend >= 50000) return { name: "GOLD", rate: 3, coins: Math.round(annualSpend * 0.03) };
-    if (annualSpend >= 20000) return { name: "SILVER", rate: 1, coins: Math.round(annualSpend * 0.01) };
-    return { name: "BRONZE", rate: 0, coins: 0 };
-  };
-
   const handleJoinSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!mobileNumber || mobileNumber.length < 10) {
@@ -196,14 +185,12 @@ export default function FabFamilyPage() {
     });
   };
 
-  const tierInfo = calculatedTier();
-
   return (
     <div className="min-h-screen bg-white text-[#2A2A2A] font-sans antialiased">
       {/* ========================================================================= */}
       {/* 1. FABFAMILY SUB-HEADER BAR */}
       {/* ========================================================================= */}
-      <nav className="sticky top-20 z-30 w-full bg-white border-b border-[#E6E0D8] shadow-xs">
+      <nav className="sticky top-0 z-30 w-full bg-white border-b border-[#E6E0D8] shadow-xs">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/fabfamily" className="relative w-36 sm:w-44 h-9 block">
@@ -241,12 +228,12 @@ export default function FabFamilyPage() {
 
           {/* Join / Login CTA */}
           <div>
-            <button
-              onClick={() => setIsJoinModalOpen(true)}
-              className="px-4 sm:px-6 py-2 bg-[#8B2331] hover:bg-[#701C27] text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow-xs"
+            <Link
+              href="/login/email?startUrl=fabfamily"
+              className="px-4 sm:px-6 py-2 bg-[#8B2331] hover:bg-[#701C27] text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow-xs inline-block"
             >
               JOIN OR LOGIN
-            </button>
+            </Link>
           </div>
         </div>
       </nav>
@@ -376,12 +363,12 @@ export default function FabFamilyPage() {
                 is a close-knit circle of those of us who cherish the rich cultural heritage of our country as well as the progressive values that we all hold dear.
               </p>
               <div>
-                <button
-                  onClick={() => setIsJoinModalOpen(true)}
-                  className="px-7 py-3 bg-[#8B2331] hover:bg-[#701C27] text-white text-xs font-bold uppercase tracking-widest transition-colors shadow-xs"
+                <Link
+                  href="/login?startUrl=fabfamily"
+                  className="inline-block px-7 py-3 bg-[#8B2331] hover:bg-[#701C27] text-white text-xs font-bold uppercase tracking-widest transition-colors shadow-xs"
                 >
                   JOIN US
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -565,87 +552,7 @@ export default function FabFamilyPage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. INTERACTIVE FABCOINS CALCULATOR (Real-time Engagement) */}
-      {/* ========================================================================= */}
-      <section className="py-12 bg-[#FAF6F0] border-y border-[#E6E0D8]">
-        <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white p-8 sm:p-10 border border-[#E6E0D8] shadow-sm">
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#E6E0D8]">
-              <Calculator className="w-6 h-6 text-[#8B2331]" />
-              <div>
-                <h3 className="font-serif text-xl sm:text-2xl text-[#2A2A2A] font-bold">
-                  Fabcoins & Tier Simulator
-                </h3>
-                <p className="text-xs text-[#6B6B6B]">
-                  Estimate your annual shopping to see your tier upgrade and Fabcoins earned.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              <div className="md:col-span-7 space-y-5">
-                <div>
-                  <div className="flex justify-between text-xs font-semibold mb-2">
-                    <span className="text-[#6B6B6B]">Estimated Annual Spend:</span>
-                    <span className="text-lg font-serif text-[#8B2331]">
-                      ₹{annualSpend.toLocaleString("en-IN")}
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min="5000"
-                    max="250000"
-                    step="5000"
-                    value={annualSpend}
-                    onChange={(e) => setAnnualSpend(Number(e.target.value))}
-                    className="w-full accent-[#8B2331] cursor-pointer"
-                  />
-                  <div className="flex justify-between text-[11px] text-[#888] mt-1 font-mono">
-                    <span>₹5,000</span>
-                    <span>₹2,50,000+</span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                  <div className="p-3 bg-[#FAF6F0] border border-[#E6E0D8]">
-                    <span className="text-[10px] text-[#6B6B6B] block">Earn Rate</span>
-                    <strong className="text-sm text-[#8B2331]">{tierInfo.rate}%</strong>
-                  </div>
-                  <div className="p-3 bg-[#FAF6F0] border border-[#E6E0D8]">
-                    <span className="text-[10px] text-[#6B6B6B] block">Fabcoins</span>
-                    <strong className="text-sm text-[#2A2A2A]">{tierInfo.coins}</strong>
-                  </div>
-                  <div className="p-3 bg-[#FAF6F0] border border-[#E6E0D8]">
-                    <span className="text-[10px] text-[#6B6B6B] block">Cash Value</span>
-                    <strong className="text-sm text-[#2A2A2A]">₹{tierInfo.coins}</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div className="md:col-span-5 bg-[#FAF6F0] p-6 border border-[#E6E0D8] text-center space-y-3">
-                <span className="text-[10px] uppercase tracking-widest font-bold text-[#8B2331]">
-                  Your Projected Status
-                </span>
-                <h4 className="text-2xl font-serif font-bold text-[#2A2A2A]">
-                  {tierInfo.name} TIER
-                </h4>
-                <p className="text-xs text-[#6B6B6B]">
-                  1 Fabcoin = ₹1 at checkout across 350+ stores nationwide & fabindia.com.
-                </p>
-                <button
-                  onClick={() => setIsJoinModalOpen(true)}
-                  className="w-full py-2.5 bg-[#8B2331] hover:bg-[#701C27] text-white text-xs font-bold uppercase tracking-wider transition-colors"
-                >
-                  Claim My Membership
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 8. THESE FABCOINS ARE WAITING FOR YOU! (Shopping & Referrals) */}
+      {/* 7. THESE FABCOINS ARE WAITING FOR YOU! (Shopping & Referrals) */}
       {/* ========================================================================= */}
       <section className="py-14 sm:py-16 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="bg-[#FAF6F0] p-8 sm:p-12 border border-[#E6E0D8] space-y-8">
@@ -677,7 +584,7 @@ export default function FabFamilyPage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 9. EXPLORE OUR SHARED VALUES COMMUNITY (Sponsors Grid + Banner) */}
+      {/* 8. EXPLORE OUR SHARED VALUES COMMUNITY (Sponsors Grid + Banner) */}
       {/* ========================================================================= */}
       <section id="rewards" className="py-14 sm:py-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 text-center">
         <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#6B6B6B] block mb-1">
@@ -716,6 +623,25 @@ export default function FabFamilyPage() {
           />
         </div>
       </section>
+
+      {/* ========================================================================= */}
+      {/* 9. MINIMAL FABFAMILY FOOTER */}
+      {/* ========================================================================= */}
+      <footer className="bg-[#FAF6F0] border-t border-[#E6E0D8] py-12 px-4 sm:px-6 lg:px-12 text-center text-xs text-[#6B6B6B] space-y-5">
+        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 text-xs font-medium text-[#4A4A4A]">
+          <Link href="/about" className="hover:text-[#8B2331] transition-colors">About Fabindia</Link>
+          <Link href="/stores" className="hover:text-[#8B2331] transition-colors">Store Locator</Link>
+          <Link href="/category/services" className="hover:text-[#8B2331] transition-colors">Interior & Custom Tailoring</Link>
+          <a href="#rewards" className="hover:text-[#8B2331] transition-colors">Curated Rewards</a>
+          <Link href="/about" className="hover:text-[#8B2331] transition-colors">Terms & Conditions</Link>
+          <Link href="/about" className="hover:text-[#8B2331] transition-colors">Privacy Policy</Link>
+          <Link href="/about" className="hover:text-[#8B2331] transition-colors">Support & FAQs</Link>
+        </div>
+        <div className="pt-2 text-[11px] text-[#888] space-y-1">
+          <p>© {new Date().getFullYear()} Fabindia Overseas Pvt. Ltd. All rights reserved.</p>
+          <p>Fabfamily is a registered loyalty reward program of Fabindia.</p>
+        </div>
+      </footer>
 
       {/* ========================================================================= */}
       {/* 10. INTERACTIVE JOIN OR LOGIN MODAL */}

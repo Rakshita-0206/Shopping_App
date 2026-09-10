@@ -1,7 +1,7 @@
 "use client";
 
 import { useToastStore } from "@/store/toastStore";
-import { CheckCircle2, Info, X } from "lucide-react";
+import { CheckCircle2, X } from "lucide-react";
 
 export default function ToastContainer() {
   const { toasts, removeToast } = useToastStore();

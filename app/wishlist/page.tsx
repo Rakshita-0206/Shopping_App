@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Heart, ShoppingBag, Trash2, ArrowRight } from "lucide-react";
+import { Heart, ArrowRight } from "lucide-react";
 import { useWishlistStore } from "@/store/wishlistStore";
-import { useCartStore } from "@/store/cartStore";
 import { PRODUCTS } from "@/data/products";
 import ProductCard from "@/components/ui/ProductCard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
@@ -13,7 +12,6 @@ import { useToastStore } from "@/store/toastStore";
 export default function WishlistPage() {
   const [mounted, setMounted] = useState(false);
   const { items, clearWishlist } = useWishlistStore();
-  const { addItem } = useCartStore();
   const { showToast } = useToastStore();
 
   useEffect(() => {
@@ -23,33 +21,41 @@ export default function WishlistPage() {
   if (!mounted) {
     return (
       <div className="max-w-[1440px] mx-auto px-4 py-20 text-center">
-        <div className="animate-pulse text-[#6B6B6B] font-serif text-xl">Loading your saved craft pieces…</div>
+        <p className="text-xs text-[#6B6B6B]">Loading your wishlist…</p>
       </div>
     );
   }
 
   const savedProducts = PRODUCTS.filter((p) => items.includes(p.id));
 
+  const handleClearWishlist = () => {
+    clearWishlist();
+    showToast({
+      title: "Wishlist Cleared",
+      description: "All saved items have been removed.",
+    });
+  };
+
   return (
-    <div className="min-h-screen bg-[#FAF6F0] pb-24">
+    <div className="min-h-screen bg-[#FAF6F0] pb-20">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-4 border-b border-[#E6E0D8]">
         <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "My Wishlist" }]} />
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#E6E0D8] pb-4">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+        <div className="flex items-center justify-between pb-4 border-b border-[#E6E0D8]">
           <div>
-            <h1 className="font-serif text-2xl sm:text-4xl text-[#2A2A2A]">
-              My Saved Wishlist
+            <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-[#8B2331]">
+              Saved For Later
+            </span>
+            <h1 className="font-serif text-2xl sm:text-3xl text-[#2A2A2A] mt-0.5">
+              My Wishlist ({savedProducts.length})
             </h1>
-            <p className="text-xs text-[#6B6B6B] mt-1">
-              You have {savedProducts.length} {savedProducts.length === 1 ? "item" : "items"} saved in your wishlist
-            </p>
           </div>
 
           {savedProducts.length > 0 && (
             <button
-              onClick={clearWishlist}
+              onClick={handleClearWishlist}
               className="text-xs text-[#6B6B6B] hover:text-[#B3261E] underline font-medium"
             >
               Clear Entire Wishlist

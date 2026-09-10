@@ -14,6 +14,7 @@ export interface Product {
   fabricAndCare: string[];
   shippingInfo: string;
   fabric?: string;
+  occasion?: "Festive" | "Everyday Casual" | "Wedding" | "Office Wear" | string;
   colors: {
     name: string;
     hex: string;
