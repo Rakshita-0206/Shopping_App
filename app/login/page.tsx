@@ -373,17 +373,17 @@ function LoginContent() {
       {/* ========================================================================= */}
       {/* 4. MAIN BODY CANVAS WITH ORNAMENTAL MANDALA ARTWORK (LEFT & RIGHT) */}
       {/* ========================================================================= */}
-      <main className="relative flex-1 flex items-center justify-center py-16 sm:py-24 px-4 overflow-hidden bg-white">
-        {/* LEFT ORNAMENT (Exact match to Image 2 - Authentic Fabindia Henna / Mandala Motif) */}
+      <main className="relative flex-1 flex items-center justify-center min-h-[580px] lg:min-h-[640px] py-16 sm:py-24 px-4 overflow-hidden bg-white">
+        {/* LEFT ORNAMENT (Exact match to Image 2 - Authentic Fabindia Motif: bottom-left pointing up) */}
         <FabindiaOrnament
           side="left"
-          className="absolute -left-12 sm:left-0 top-1/2 -translate-y-1/2 opacity-75 sm:opacity-90 z-0"
+          className="absolute bottom-0 left-0 z-0 opacity-80 sm:opacity-100"
         />
 
-        {/* RIGHT ORNAMENT (Exact match to Image 2 - Authentic Fabindia Henna / Mandala Motif) */}
+        {/* RIGHT ORNAMENT (Exact match to Image 2 - Authentic Fabindia Motif: top-right pointing down) */}
         <FabindiaOrnament
           side="right"
-          className="absolute -right-12 sm:right-0 top-1/2 -translate-y-1/2 opacity-75 sm:opacity-90 z-0"
+          className="absolute top-0 right-0 z-0 opacity-80 sm:opacity-100"
         />
 
         {/* CENTERED LOGIN OR SIGNUP FORM */}
@@ -397,12 +397,12 @@ function LoginContent() {
 
               <form onSubmit={handleSendOtp} className="space-y-8 pt-4">
                 {/* Single Underlined Mobile Input Row */}
-                <div className="flex items-center gap-2 border-b border-[#CCCCCC] focus-within:border-[#801323] pb-2 transition-colors">
+                <div className="flex items-center gap-3 border-b border-[#CCCCCC] focus-within:border-[#801323] pb-2.5 transition-colors">
                   <div className="flex items-center gap-1.5 shrink-0 text-sm text-[#2A2A2A] font-medium pr-1 select-none">
                     <span className="text-base leading-none">🇮🇳</span>
                     <span className="text-sm font-normal text-[#2A2A2A]">+91</span>
                   </div>
-                  <div className="w-[1px] h-4 bg-[#E0E0E0] mx-0.5" />
+                  <div className="w-[1px] h-4 bg-[#E0E0E0]" />
                   <input
                     type="tel"
                     maxLength={10}
@@ -420,10 +420,10 @@ function LoginContent() {
                 <button
                   type="submit"
                   disabled={mobileNumber.length !== 10 || isLoading}
-                  className={`w-full py-3 rounded-full text-sm font-semibold uppercase tracking-wider transition-all duration-200 select-none ${
+                  className={`w-full py-3 rounded-full text-sm font-medium transition-all duration-200 select-none ${
                     mobileNumber.length === 10
                       ? "bg-[#801323] hover:bg-[#6E101D] text-white shadow-xs cursor-pointer"
-                      : "bg-[#D9D9D9] text-white cursor-not-allowed"
+                      : "bg-[#CCCCCC] text-white cursor-not-allowed"
                   }`}
                 >
                   {isLoading ? "Sending OTP..." : "Send OTP"}
