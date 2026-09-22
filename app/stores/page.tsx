@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { MapPin, Phone, Clock, Search, Navigation, Building } from "lucide-react";
+import { MapPin, Phone, Clock, Search, Navigation } from "lucide-react";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 interface Store {

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 interface FabindiaOrnamentProps {
   className?: string;
@@ -32,14 +33,13 @@ export default function FabindiaOrnament({
       } ${className}`}
       aria-hidden="true"
     >
-      <img
+      <Image
         src={src}
         alt={alt}
         width={349}
         height={509}
+        priority
         className="w-[180px] sm:w-[240px] md:w-[300px] lg:w-[349px] h-auto object-contain pointer-events-none select-none transition-opacity duration-300"
-        loading="eager"
-        decoding="async"
       />
     </div>
   );

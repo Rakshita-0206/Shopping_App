@@ -1,6 +1,7 @@
 {
-  "name": "app-temp",
+  "name": "viraasat-shopping-app",
   "version": "0.1.0",
+  "description": "Artisanal Indian handloom, apparel, and lifestyle e-commerce web platform inspired by Fabindia",
   "private": true,
   "scripts": {
     "dev": "next dev",

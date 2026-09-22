@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect, use, Suspense } from "react";
 import Image from "next/image";
-import { notFound, redirect, useSearchParams, useRouter, usePathname } from "next/navigation";
+import { notFound, redirect, useSearchParams, usePathname } from "next/navigation";
 import {
   X,
   ChevronDown,
@@ -12,7 +12,6 @@ import {
   Scissors,
   Home as HomeIcon,
   Gift,
-  Calendar,
   Sparkles,
 } from "lucide-react";
 import { CATEGORIES } from "@/data/categories";
@@ -93,7 +92,7 @@ function ServicesLanding() {
             Tailored Experiences, Thoughtfully Crafted
           </h1>
           <p className="text-xs sm:text-sm text-stone-300 font-light leading-relaxed">
-            From made-to-measure ethnic tailoring and personalized home styling to customized corporate craft hampers, experience Fabindia's bespoke craftsmanship.
+            From made-to-measure ethnic tailoring and personalized home styling to customized corporate craft hampers, experience Fabindia&apos;s bespoke craftsmanship.
           </p>
         </div>
       </div>
@@ -287,27 +286,15 @@ function ServicesLanding() {
 }
 
 // =========================================================================
-// MAIN PLP CATEGORY CONTENT
+// MAIN PLP CATEGORY LISTING VIEW (ALL HOOKS LIVE UNCONDITIONALLY HERE)
 // =========================================================================
-function CategoryContent({ params }: PageProps) {
-  const { slug } = use(params);
-  const router = useRouter();
+function CategoryListingView({
+  category,
+}: {
+  category: NonNullable<(typeof CATEGORIES)[number]>;
+}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
-  if (slug === "fabfamily") {
-    redirect("/fabfamily");
-  }
-
-  const category = CATEGORIES.find((c) => c.slug === slug);
-  if (!category) {
-    notFound();
-  }
-
-  if (slug === "services") {
-    return <ServicesLanding />;
-  }
-
   const { formatPrice } = useCurrencyStore();
 
   // Collapsible accordion states for filters
@@ -1204,6 +1191,25 @@ function CategoryContent({ params }: PageProps) {
       )}
     </div>
   );
+}
+
+function CategoryContent({ params }: PageProps) {
+  const { slug } = use(params);
+
+  if (slug === "fabfamily") {
+    redirect("/fabfamily");
+  }
+
+  if (slug === "services") {
+    return <ServicesLanding />;
+  }
+
+  const category = CATEGORIES.find((c) => c.slug === slug);
+  if (!category) {
+    notFound();
+  }
+
+  return <CategoryListingView category={category} />;
 }
 
 export default function CategoryPage(props: PageProps) {
